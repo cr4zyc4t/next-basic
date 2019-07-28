@@ -14,10 +14,13 @@ class MemoInClass extends Component {
       console.log("Run calculation 2", dep2);
       return Math.round(Math.random() * 10000000);
     }, [dep2]);
-    console.log("TCL: MemoInClass -> render -> randNum", randNum, randNum2, this.memoHooks);
 
     return (
-      <div>{JSON.stringify(this.props)}</div>
+      <div>
+        <div>{JSON.stringify(this.props)}</div>
+        <div>randNum: {randNum} - {dep1}</div>
+        <div>randNum2: {randNum2} - {dep2}</div>
+      </div>
     );
   }
 }
