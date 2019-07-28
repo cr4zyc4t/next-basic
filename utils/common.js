@@ -1,3 +1,5 @@
+import find from "lodash/find";
+
 export const createReducer = (initialState, handlers) => (state = initialState, action) => {
   const handler = handlers[action.type];
   return handler ? handler(state, action.payload) : state;
@@ -32,7 +34,7 @@ export const withMemoMethod = (Component) => {
   return class extends Component {
     memoHooks = [];
     memo(calc, deps) {
-      let hook = this.memoHooks.find(hook => hook.called === false);
+      let hook = find(this.memoHooks, hook => hook.called === false);
       if (hook) {
         if (!shallowEqual(hook.deps, deps)) {
           hook.result = calc();
