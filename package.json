@@ -1,0 +1,57 @@
+{
+  "name": "next-basic",
+  "version": "1.0.0",
+  "description": "Basic NextJS app with Express server and Redux store",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cr4zyc4t/next-basic.git"
+  },
+  "keywords": [
+    "next",
+    "redux",
+    "express"
+  ],
+  "author": "ToanVQ",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cr4zyc4t/next-basic/issues"
+  },
+  "homepage": "https://github.com/cr4zyc4t/next-basic#readme",
+  "dependencies": {
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "@cr4zyc4t/eslint-config-common": "1.0.4",
+    "@types/react": "16.8.23",
+    "@types/react-redux": "7.1.1",
+    "@zeit/next-css": "1.0.1",
+    "@zeit/next-sass": "1.0.1",
+    "babel-eslint": "10.x",
+    "babel-plugin-styled-components": "1.10.6",
+    "classnames": "2.2.6",
+    "eslint": "5.x",
+    "eslint-config-react-app": "4.0.1",
+    "eslint-plugin-flowtype": "2.x",
+    "eslint-plugin-import": "2.x",
+    "eslint-plugin-jsx-a11y": "6.x",
+    "eslint-plugin-react": "7.x",
+    "eslint-plugin-react-hooks": "1.x",
+    "lodash": "4.17.15",
+    "moment": "2.24.0",
+    "next": "9.0.2",
+    "next-redux-wrapper": "3.0.0-alpha.3",
+    "node-sass": "4.12.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-redux": "7.1.0",
+    "redux": "4.0.4",
+    "redux-thunk": "2.3.0",
+    "styled-components": "4.3.2",
+    "uuid": "3.3.2"
+  }
+}
