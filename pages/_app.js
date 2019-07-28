@@ -6,6 +6,8 @@ import withRedux from "next-redux-wrapper";
 import rootReducer from "../reducers";
 import thunk from "redux-thunk";
 import MainLayout from "../layouts/main";
+import createSagaMiddleware from "redux-saga";
+import rootSagas from "../sagas";
 
 /**
 * @param {object} initialState
@@ -16,16 +18,23 @@ import MainLayout from "../layouts/main";
 * @param {string} options.storeKey This key will be used to preserve store in global namespace for safe HMR 
 */
 const makeStore = (initialState, { isServer }) => {
+  const sagaMiddleware = createSagaMiddleware();
+
   const composeEnhancers = !isServer && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
     name: "Next Basic",
     trace: true,
     traceLimit: 10,
   }) : compose;
-  return createStore(rootReducer, initialState, composeEnhancers(
+  const store = createStore(rootReducer, initialState, composeEnhancers(
     applyMiddleware(
-      thunk
+      thunk,
+      sagaMiddleware,
     )
   ));
+
+  sagaMiddleware.run(rootSagas);
+
+  return store;
 };
 
 class MyApp extends App {
