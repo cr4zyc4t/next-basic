@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Basic NextJS app with Express server and Redux store",
   "scripts": {
+    "lint": "eslint components layouts pages server store utils",
     "dev": "cross-env NODE_ENV=development node server/index.js",
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true next build",

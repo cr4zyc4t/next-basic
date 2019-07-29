@@ -1,5 +1,5 @@
 import Counter from "./Counter";
-import { counterIncrease, counterDecrease } from "../../actions/counter";
+import { counterIncrease, counterDecrease } from "../../store/actions/counter";
 import { connect } from "react-redux";
 
 const mapState = (state) => ({

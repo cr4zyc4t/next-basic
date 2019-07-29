@@ -46,7 +46,7 @@ export default function Home() {
         </LogoContainer>
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          </p>
+        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -54,7 +54,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           Learn React
-          </a>
+        </a>
       </header>
     </Container>
   );

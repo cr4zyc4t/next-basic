@@ -1,6 +1,6 @@
 import React, { useEffect, memo } from "react";
 import { connect } from "react-redux";
-import { tableDataRequestStop, tableDataRequestStart } from "../actions/table";
+import { tableDataRequestStop, tableDataRequestStart } from "../store/actions/table";
 import moment from "moment";
 import styled from "styled-components";
 

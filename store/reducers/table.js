@@ -1,5 +1,5 @@
 import { TABLE_SET_DATA, TABLE_ADD_ITEM } from "../actions/table";
-import { createReducer } from "../utils/common";
+import { createReducer } from "../../utils/common";
 
 const initialState = {
   data: [],

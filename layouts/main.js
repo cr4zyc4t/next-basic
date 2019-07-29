@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Navbar from "../components/NavBar";
-import Head from "next/head";
 
 const Container = styled.div`
   display: flex;

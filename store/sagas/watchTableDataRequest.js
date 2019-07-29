@@ -1,5 +1,5 @@
-import { call, put, delay, take, fork, cancel, race, cancelled } from "redux-saga/effects";
-import { TABLE_DATA_REQ_START, tableAddItem, tableDataRequestStart, TABLE_DATA_REQ_STOP, tableDataRequestStop } from "../actions/table";
+import { call, put, delay, take, cancel, race } from "redux-saga/effects";
+import { TABLE_DATA_REQ_START, tableAddItem, TABLE_DATA_REQ_STOP } from "../actions/table";
 import axios from "axios";
 
 function* makeTableDataRequest(length) {
