@@ -40,9 +40,9 @@ const TableRow = memo(({ rowData }) => (
 function Table({ data, requestData, interval, length }) {
   useEffect(() => {
     requestData(length);
-    const timer = setInterval(requestData, interval, length);
+    const timer = setTimeout(requestData, interval, length, interval);
     return () => {
-      clearInterval(timer);
+      clearTimeout(timer);
     };
   }, [interval, length, requestData]);
 

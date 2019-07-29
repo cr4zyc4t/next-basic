@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Basic NextJS app with Express server and Redux store",
   "scripts": {
-    "dev": "next dev",
+    "dev": "cross-env NODE_ENV=development node server/index.js",
     "build": "next build",
-    "start": "next start"
+    "start": "cross-env NODE_ENV=production node server/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,10 @@
   "homepage": "https://github.com/cr4zyc4t/next-basic#readme",
   "dependencies": {
     "axios": "0.19.0",
+    "cross-env": "5.2.0",
     "express": "4.17.1",
+    "faker": "4.1.0",
+    "morgan": "1.9.1",
     "uuid": "3.3.2"
   },
   "devDependencies": {

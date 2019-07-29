@@ -7,10 +7,11 @@ export const tableSetData = (data) => ({
 });
 
 export const TABLE_DATA_REQ = "TABLE_DATA_REQ";
-export const tableDataRequest = (length) => ({
+export const tableDataRequest = (length, interval) => ({
   type: TABLE_DATA_REQ,
   payload: {
     length,
+    interval,
   },
 });
 

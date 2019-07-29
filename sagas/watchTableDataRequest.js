@@ -1,12 +1,12 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-import { TABLE_DATA_REQ, tableAddItem } from "../actions/table";
+import { takeLatest, call, put, delay } from "redux-saga/effects";
+import { TABLE_DATA_REQ, tableAddItem, tableDataRequest } from "../actions/table";
 import axios from "axios";
 
-function* makeTableDataRequest({ payload: { length = 50 } }) {
+function* makeTableDataRequest({ payload: { length = 50, interval = 500 } }) {
   let response = null;
   try {
     response = yield call(axios, {
-      url: "http://localhost:4000/table/new-item",
+      url: "api/table/new-item",
       method: "get",
       responseType: "json",
     });
@@ -18,6 +18,8 @@ function* makeTableDataRequest({ payload: { length = 50 } }) {
     ...response.data,
   };
   yield put(tableAddItem(newItem, length));
+  yield delay(interval);
+  yield put(tableDataRequest(length, interval));
 }
 
 export default function* watchTableDataRequest() {
