@@ -1,18 +1,16 @@
 import React from "react";
+import styled from "styled-components";
+
+const ControlBtn = styled.button`
+  margin: 8px;
+`;
 
 export default function Counter({ counterIncrease, counterDecrease, counter }) {
   return (
     <div>
-      <button className="btn btn-danger control-btn" onClick={counterDecrease}>Decrease</button>
+      <ControlBtn className="btn btn-danger" onClick={counterDecrease}>Decrease</ControlBtn>
       {counter}
-      <button className="btn btn-success control-btn" onClick={counterIncrease}>Increase</button>
-      <style jsx>
-        {`
-        .control-btn {
-          margin: 8px;
-        }
-      `}
-      </style>
+      <ControlBtn className="btn btn-success" onClick={counterIncrease}>Increase</ControlBtn>
     </div>
   );
 }

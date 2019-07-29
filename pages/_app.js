@@ -27,12 +27,12 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
     return (
       <Container>
+        <GlobalStyle />
         <Provider store={store}>
           <MainLayout>
             <Component {...pageProps} />
           </MainLayout>
         </Provider>
-        <GlobalStyle />
       </Container>
     );
   }
