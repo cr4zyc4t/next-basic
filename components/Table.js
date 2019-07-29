@@ -1,6 +1,6 @@
 import React, { useEffect, memo } from "react";
 import { connect } from "react-redux";
-import { tableDataRequest } from "../actions/table";
+import { tableDataRequestStop, tableDataRequestStart } from "../actions/table";
 import moment from "moment";
 import styled from "styled-components";
 
@@ -37,14 +37,13 @@ const TableRow = memo(({ rowData }) => (
   </tr>
 ));
 
-function Table({ data, requestData, interval, length }) {
+function Table({ data, requestData, stopRequestData, interval, length }) {
   useEffect(() => {
-    requestData(length);
-    const timer = setInterval(requestData, interval, length);
+    requestData(length, interval);
     return () => {
-      clearInterval(timer);
+      stopRequestData();
     };
-  }, [interval, length, requestData]);
+  }, [interval, length, requestData, stopRequestData]);
 
   return (
     <table className="table table-striped">
@@ -63,6 +62,7 @@ export default connect(
     data: state.table.data,
   }),
   {
-    requestData: tableDataRequest,
+    requestData: tableDataRequestStart,
+    stopRequestData: tableDataRequestStop,
   }
 )(Table);
