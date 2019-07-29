@@ -1,12 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
-
-const head = (
-  <Head >
-    <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css"></link>
-  </Head>
-);
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -32,17 +25,5 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
-  }
-
-  render() {
-    return (
-      <Html>
-        {head}
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
   }
 }

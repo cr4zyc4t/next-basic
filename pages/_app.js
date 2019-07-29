@@ -1,6 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import App, { Container } from "next/app";
+import Head from "next/head";
 import withRedux from "next-redux-wrapper";
 import MainLayout from "../layouts/main";
 import makeStore from "../store";
@@ -22,12 +23,22 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const head = (
+  <>
+    <GlobalStyle />
+    <Head >
+      <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css"></link>
+    </Head>
+  </>
+);
+
 class MyApp extends App {
   render() {
     const { Component, pageProps, store } = this.props;
     return (
       <Container>
-        <GlobalStyle />
+        {head}
         <Provider store={store}>
           <MainLayout>
             <Component {...pageProps} />
