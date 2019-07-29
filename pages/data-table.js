@@ -1,15 +1,10 @@
 import Table from "../components/Table";
 import { useState, useCallback } from "react";
-// import { queryParser } from "../utils/common";
-// import { useRouter } from "next/router";
+import { queryParser } from "../utils/common";
 
-export default function DataTable() {
-  // const router = useRouter();
-  // const query = queryParser(router.asPath);
-  // const interval = (query.interval ? parseInt(query.interval) : 500) || 500;
-  // const length = (query.length ? parseInt(query.length) : 30) || 30;
-  const [interval, setInterval] = useState(500);
-  const [length, setLength] = useState(20);
+export default function DataTable(props) {
+  const [interval, setInterval] = useState(props.interval || 500);
+  const [length, setLength] = useState(props.length || 20);
 
   const handleIntervalChange = useCallback((e) => setInterval(e.target.value), []);
   const handleLengthChange = useCallback((e) => setLength(e.target.value), []);
@@ -45,3 +40,13 @@ export default function DataTable() {
     </div>
   );
 }
+
+DataTable.getInitialProps = ({ asPath }) => {
+  const query = queryParser(asPath);
+  const interval = (query.interval ? parseInt(query.interval) : 500) || 500;
+  const length = (query.length ? parseInt(query.length) : 20) || 20;
+  return {
+    interval,
+    length,
+  };
+};
