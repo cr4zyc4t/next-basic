@@ -1,12 +1,47 @@
 import Table from "../components/Table";
-import { queryParser } from "../utils/common";
-import { useRouter } from "next/router";
+import { useState, useCallback } from "react";
+// import { queryParser } from "../utils/common";
+// import { useRouter } from "next/router";
 
 export default function DataTable() {
-  const router = useRouter();
-  const query = queryParser(router.asPath);
-  const interval = (query.interval ? parseInt(query.interval) : 500) || 500;
-  const length = (query.length ? parseInt(query.length) : 30) || 30;
+  // const router = useRouter();
+  // const query = queryParser(router.asPath);
+  // const interval = (query.interval ? parseInt(query.interval) : 500) || 500;
+  // const length = (query.length ? parseInt(query.length) : 30) || 30;
+  const [interval, setInterval] = useState(500);
+  const [length, setLength] = useState(20);
 
-  return <Table interval={interval} length={length} />;
+  const handleIntervalChange = useCallback((e) => setInterval(e.target.value), []);
+  const handleLengthChange = useCallback((e) => setLength(e.target.value), []);
+
+  return (
+    <div>
+      <div className="row">
+        <div className="col-sm-6">
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">Interval</label>
+            <select className="form-control" value={interval} onChange={handleIntervalChange}>
+              <option value={500}>500ms</option>
+              <option value={1000}>1s</option>
+              <option value={2000}>2s</option>
+              <option value={5000}>5s</option>
+              <option value={10000}>10s</option>
+            </select>
+          </div>
+        </div>
+        <div className="col-sm-6">
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">Row Limit</label>
+            <select className="form-control" value={length} onChange={handleLengthChange}>
+              <option value={10}>10</option>
+              <option value={20}>20</option>
+              <option value={30}>30</option>
+              <option value={50}>50</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <Table interval={interval} length={length} />
+    </div>
+  );
 }
