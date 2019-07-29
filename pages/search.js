@@ -10,7 +10,9 @@ export default function SearchResult() {
   const router = useRouter();
   return (
     <JSONContainer>
-      {JSON.stringify(router, null, 2)}
+      {router.asPath}
+      <br />
+      {JSON.stringify(router.query, null, 2)}
     </JSONContainer>
   );
 }
