@@ -31,6 +31,7 @@ const LogoContainer = styled.div`
 const Logo = styled.img`
   animation: ${appLogoSpin} infinite 20s linear;
   height: 40vmin;
+  width: 40vmin;
   pointer-events: none;
 `;
 
