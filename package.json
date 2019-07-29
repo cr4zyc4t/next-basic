@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node server/index.js",
     "build": "next build",
-    "build:analyze": "cross-env NODE_ENV=production ANALYZE=true next build",
+    "build:analyze": "cross-env ANALYZE=true next build",
     "start": "cross-env NODE_ENV=production node server/index.js"
   },
   "repository": {
