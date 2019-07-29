@@ -6,13 +6,18 @@ export const tableSetData = (data) => ({
   },
 });
 
-export const TABLE_DATA_REQ = "TABLE_DATA_REQ";
-export const tableDataRequest = (length, interval) => ({
-  type: TABLE_DATA_REQ,
+export const TABLE_DATA_REQ_START = "TABLE_DATA_REQ";
+export const tableDataRequestStart = (length, interval) => ({
+  type: TABLE_DATA_REQ_START,
   payload: {
     length,
     interval,
   },
+});
+
+export const TABLE_DATA_REQ_STOP = "TABLE_DATA_REQ_STOP";
+export const tableDataRequestStop = () => ({
+  type: TABLE_DATA_REQ_STOP,
 });
 
 export const TABLE_ADD_ITEM = "TABLE_ADD_ITEM";

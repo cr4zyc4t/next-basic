@@ -5,12 +5,15 @@ export const createReducer = (initialState, handlers) => (state = initialState, 
   return handler ? handler(state, action.payload) : state;
 };
 
-export const queryParser = (query) => {
-  const vars = query.substring(1).split("&");
+export const queryParser = (url) => {
   const result = {};
-  for (let i = 0; i < vars.length; i++) {
-    const pair = vars[i].split("=");
-    result[pair[0]] = decodeURIComponent(pair[1]);
+  const query = url.split("?")[1];
+  if (query) {
+    const vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+      const pair = vars[i].split("=");
+      result[pair[0]] = decodeURIComponent(pair[1]);
+    }
   }
   return result;
 };

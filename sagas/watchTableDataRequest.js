@@ -1,27 +1,44 @@
-import { takeLatest, call, put, delay } from "redux-saga/effects";
-import { TABLE_DATA_REQ, tableAddItem, tableDataRequest } from "../actions/table";
+import { call, put, delay, take, fork, cancel, race, cancelled } from "redux-saga/effects";
+import { TABLE_DATA_REQ_START, tableAddItem, tableDataRequestStart, TABLE_DATA_REQ_STOP, tableDataRequestStop } from "../actions/table";
 import axios from "axios";
 
-function* makeTableDataRequest({ payload: { length = 50, interval = 500 } }) {
+function* makeTableDataRequest(length) {
   let response = null;
-  try {
-    response = yield call(axios, {
-      url: "api/table/new-item",
-      method: "get",
-      responseType: "json",
-    });
-  } catch (error) {
-    alert(`${error.name} ${error.message}`);
-    return;
-  }
+  response = yield call(axios, {
+    url: "api/table/new-item",
+    method: "get",
+    responseType: "json",
+  });
   const newItem = {
     ...response.data,
   };
   yield put(tableAddItem(newItem, length));
-  yield delay(interval);
-  yield put(tableDataRequest(length, interval));
+}
+
+function* startRequestData({ payload: { length = 50, interval = 500 } }) {
+  let lastRequestTask = null;
+  while (true) {
+    if (lastRequestTask) {
+      yield cancel(lastRequestTask); // cancel is no-op if the task has already terminated
+    }
+    try {
+      lastRequestTask = yield call(makeTableDataRequest, length);
+    } catch (error) {
+      alert(`${error.name} ${error.message}`);
+      break;
+    }
+
+    yield delay(interval);
+  }
 }
 
 export default function* watchTableDataRequest() {
-  yield takeLatest(TABLE_DATA_REQ, makeTableDataRequest);
+  // const lastRequestTask = null;
+  while (true) {
+    const action = yield take(TABLE_DATA_REQ_START);
+    yield race({
+      task: call(startRequestData, action),
+      cancel: take(TABLE_DATA_REQ_STOP),
+    });
+  }
 }
