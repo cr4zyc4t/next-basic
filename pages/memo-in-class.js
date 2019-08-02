@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import { withMemoMethod } from "../utils/common";
 
 class MemoInClass extends Component {
-
   render() {
     const dep1 = Math.floor(Date.now() / 10000);
     const dep2 = Math.floor(Date.now() / 5000);

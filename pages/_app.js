@@ -1,10 +1,7 @@
 import React from "react";
-import { Provider } from "react-redux";
 import App, { Container } from "next/app";
 import Head from "next/head";
-import withRedux from "next-redux-wrapper";
 import MainLayout from "../layouts/main";
-import makeStore from "../store";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
@@ -35,19 +32,17 @@ const head = (
 
 class MyApp extends App {
   render() {
-    const { Component, pageProps, store } = this.props;
+    const { Component, pageProps } = this.props;
     return (
       <Container>
         {head}
-        <Provider store={store}>
-          <MainLayout>
-            <Component {...pageProps} />
-          </MainLayout>
-        </Provider>
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
       </Container>
     );
   }
 
 }
 
-export default withRedux(makeStore)(MyApp);
+export default MyApp;

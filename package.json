@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run watch:server & npm run dev",
     "lint": "eslint components layouts pages server store utils",
-    "dev": "cross-env NODE_ENV=development nodemon server/dist/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch server/lib server/dist/index.js",
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true next build",
     "deploy": "cross-env NODE_ENV=production node server/dist/index.js",

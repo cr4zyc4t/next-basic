@@ -1,6 +1,7 @@
 import Table from "../components/Table";
 import { useState, useCallback } from "react";
 import { queryParser } from "../utils/common";
+import WithRedux from "layouts/with-redux";
 
 export default function DataTable(props) {
   const [interval, setInterval] = useState(props.interval || 500);
@@ -10,7 +11,7 @@ export default function DataTable(props) {
   const handleLengthChange = useCallback((e) => setLength(e.target.value), []);
 
   return (
-    <div>
+    <WithRedux>
       <div className="row">
         <div className="col-sm-6">
           <div className="form-group">
@@ -37,7 +38,7 @@ export default function DataTable(props) {
         </div>
       </div>
       <Table interval={interval} length={length} />
-    </div>
+    </WithRedux>
   );
 }
 

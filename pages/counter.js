@@ -1,6 +1,7 @@
 import React from "react";
 import Counter from "../components/Counter";
 import styled from "styled-components";
+import WithRedux from "layouts/with-redux";
 
 const Container = styled.div`
   display: flex;
@@ -9,8 +10,10 @@ const Container = styled.div`
 
 export default function CounterPage() {
   return (
-    <Container>
-      <Counter />
-    </Container>
+    <WithRedux>
+      <Container>
+        <Counter />
+      </Container>
+    </WithRedux>
   );
 }
