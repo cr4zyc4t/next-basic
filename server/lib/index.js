@@ -2,12 +2,13 @@
 // This file doesn't go through babel or webpack transformation.
 // Make sure the syntax and sources this file requires are compatible with the current node version you are running
 // See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
-const { createServer } = require("http");
-const { parse } = require("url");
-const next = require("next");
-const express = require("express");
-const logger = require("morgan");
-const noCache = require("./middlewares/no-cache");
+import { createServer } from "http";
+import { parse } from "url";
+import next from "next";
+import express from "express";
+import logger from "morgan";
+import noCache from "./middlewares/no-cache";
+import tableRouter from "./routes/table";
 
 const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
@@ -45,7 +46,7 @@ nextApp.prepare().then(() => {
   // Express server will handle API request
   app.use("/api/*", noCache);
   // APIs routes
-  app.use("/api/table", require("./routes/table"));
+  app.use("/api/table", tableRouter);
 
   // Let the NextApp handle everything else
   app.get("*", (req, res) => {

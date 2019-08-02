@@ -1,11 +1,12 @@
-const express = require("express");
-const router = express.Router();
-const faker = require("faker");
-const uuid = require("uuid/v4");
-const range = require("lodash/range");
+import express from "express";
+import faker from "faker";
+import uuid from "uuid/v4";
+import range from "lodash/range";
+
+const tableRouter = express.Router();
 
 /* GET users listing. */
-router.get("/", function (req, res) {
+tableRouter.get("/", function (req, res) {
   const { length = 100 } = req.query;
   const tableData = range(length).map(() => ({
     id: uuid(),
@@ -22,7 +23,7 @@ router.get("/", function (req, res) {
   res.json(tableData);
 });
 
-router.get("/new-item", function (req, res) {
+tableRouter.get("/new-item", function (req, res) {
   res.json({
     id: uuid(),
     first_name: faker.name.firstName(),
@@ -37,4 +38,4 @@ router.get("/new-item", function (req, res) {
   });
 });
 
-module.exports = router;
+export default tableRouter;
