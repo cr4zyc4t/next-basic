@@ -19,6 +19,7 @@ module.exports = withBundleAnalyzer({
     config.resolve.alias["pages"] = path.join(__dirname, "pages");
     config.resolve.alias["store"] = path.join(__dirname, "store");
     config.resolve.alias["utils"] = path.join(__dirname, "utils");
+    config.resolve.alias["lib"] = path.join(__dirname, "lib");
     config.plugins.push(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/));
     return config;
   },
