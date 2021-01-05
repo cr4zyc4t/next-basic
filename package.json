@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/cr4zyc4t/next-basic#readme",
   "dependencies": {
-    "axios": "0.19.0",
+    "axios": "0.21.1",
     "cross-env": "5.2.0",
     "express": "4.17.1",
     "faker": "4.1.0",
