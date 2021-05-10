@@ -55,7 +55,7 @@
     "eslint-plugin-jsx-a11y": "6.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "1.x",
-    "lodash": "4.17.15",
+    "lodash": "4.17.21",
     "moment": "2.24.0",
     "next-redux-wrapper": "3.0.0-alpha.3",
     "node-sass": "4.12.0",
